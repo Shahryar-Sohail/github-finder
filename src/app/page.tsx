@@ -1,103 +1,207 @@
+'use client';
+import { useState } from "react";
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+export default function GitHubFinder() {
+  const [query, setQuery] = useState("");
+  const [result, setResult] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  async function handleSearch() {
+    setLoading(true);
+    const res = await fetch(`/api/github?search=${query}`);
+    const data = await res.json();
+    setResult(data);
+    setLoading(false);
+  }
+
+  return (
+    <div className="p-10 text-center">
+      <h1 className="text-4xl font-bold mb-5">GitHub Finder</h1>
+
+      <input
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Enter username..."
+        className="border p-3 w-1/3 text-lg"
+      />
+      <button
+        onClick={handleSearch}
+        className="ml-3 bg-blue-600 text-white px-5 py-2 rounded"
+      >
+        Search
+      </button>
+      {
+        loading &&
+        <div>
+          <span className="loading loading-spinner text-primary text-9xl"></span>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      }
+      <div className="mt-10">
+        {result && result.items?.map((u: any) => (
+
+          <div key={u.id} className="card card-side bg-base-100 shadow-sm">
+            <Image
+              src={u.avatar_url}
+              alt="Movie"
+              width={100}
+              height={100}
+            />
+            <div className="card-body">
+              <h2 className="card-title">{u.login}</h2>
+              <a href={u.html_url} target="_blank">Profile Link</a>
+              <div className="card-actions justify-end">
+                <button className="btn btn-primary">Watch</button>
+              </div>
+            </div>
+          </div>
+
+        ))}
+        <div className="w-4/6 mx-auto">
+          <div className="card card-side bg-base-100 shadow-sm">
+
+         <div className="relative w-full max-w-[400px] h-96 sm:h-72 mx-auto border overflow-hidden rounded-xl">
+  <Image
+    src="https://avatars.githubusercontent.com/u/144619587?v=4"
+    alt="Profile"
+    fill
+    className="object-cover"
+  />
+</div>
+
+
+            <div className="card-body">
+              <h2 className="card-title border">Shahryar Sohail</h2>
+              <div className="flex">
+                <button className="btn btn-soft btn-info  justify-start">
+                  <a href="https://github.com/shahryar-sohail" target="_blank">Profile Link</a>
+                </button>
+              </div>
+
+              <div className="flex justify-center gap-3">
+
+                <ul className="list bg-base-100 rounded-box shadow-md h-1/2 overflow-scroll">
+
+                  <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Followers</li>
+
+                  <li className="list-row">
+                    <div><img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp" /></div>
+                    <div>
+                      <div>Dio Lupa</div>
+                      <div className="text-xs uppercase font-semibold opacity-60">Remaining Reason</div>
+                    </div>
+                    <p className="list-col-wrap text-xs">
+                      "Remaining Reason" became an instant hit, praised for its haunting sound and emotional depth. A viral performance brought it widespread recognition, making it one of Dio Lupa’s most iconic tracks.
+                    </p>
+                    <button className="btn btn-square btn-ghost">
+                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
+                    </button>
+                    <button className="btn btn-square btn-ghost">
+                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
+                    </button>
+                  </li>
+
+                  <li className="list-row">
+                    <div><img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/4@94.webp" /></div>
+                    <div>
+                      <div>Ellie Beilish</div>
+                      <div className="text-xs uppercase font-semibold opacity-60">Bears of a fever</div>
+                    </div>
+                    <p className="list-col-wrap text-xs">
+                      "Bears of a Fever" captivated audiences with its intense energy and mysterious lyrics. Its popularity skyrocketed after fans shared it widely online, earning Ellie critical acclaim.
+                    </p>
+                    <button className="btn btn-square btn-ghost">
+                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
+                    </button>
+                    <button className="btn btn-square btn-ghost">
+                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
+                    </button>
+                  </li>
+
+                  <li className="list-row">
+                    <div><img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/3@94.webp" /></div>
+                    <div>
+                      <div>Sabrino Gardener</div>
+                      <div className="text-xs uppercase font-semibold opacity-60">Cappuccino</div>
+                    </div>
+                    <p className="list-col-wrap text-xs">
+                      "Cappuccino" quickly gained attention for its smooth melody and relatable themes. The song’s success propelled Sabrino into the spotlight, solidifying their status as a rising star.
+                    </p>
+                    <button className="btn btn-square btn-ghost">
+                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
+                    </button>
+                    <button className="btn btn-square btn-ghost">
+                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
+                    </button>
+                  </li>
+
+                </ul>
+
+                <ul className="list bg-base-100 rounded-box shadow-md  h-1/2 overflow-scroll">
+
+                  <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Follwing</li>
+
+                  <li className="list-row">
+                    <div><img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp" /></div>
+                    <div>
+                      <div>Dio Lupa</div>
+                      <div className="text-xs uppercase font-semibold opacity-60">Remaining Reason</div>
+                    </div>
+                    <p className="list-col-wrap text-xs">
+                      "Remaining Reason" became an instant hit, praised for its haunting sound and emotional depth. A viral performance brought it widespread recognition, making it one of Dio Lupa’s most iconic tracks.
+                    </p>
+                    <button className="btn btn-square btn-ghost">
+                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
+                    </button>
+                    <button className="btn btn-square btn-ghost">
+                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
+                    </button>
+                  </li>
+
+                  <li className="list-row">
+                    <div><img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/4@94.webp" /></div>
+                    <div>
+                      <div>Ellie Beilish</div>
+                      <div className="text-xs uppercase font-semibold opacity-60">Bears of a fever</div>
+                    </div>
+                    <p className="list-col-wrap text-xs">
+                      "Bears of a Fever" captivated audiences with its intense energy and mysterious lyrics. Its popularity skyrocketed after fans shared it widely online, earning Ellie critical acclaim.
+                    </p>
+                    <button className="btn btn-square btn-ghost">
+                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
+                    </button>
+                    <button className="btn btn-square btn-ghost">
+                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
+                    </button>
+                  </li>
+
+                  <li className="list-row">
+                    <div><img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/3@94.webp" /></div>
+                    <div>
+                      <div>Sabrino Gardener</div>
+                      <div className="text-xs uppercase font-semibold opacity-60">Cappuccino</div>
+                    </div>
+                    <p className="list-col-wrap text-xs">
+                      "Cappuccino" quickly gained attention for its smooth melody and relatable themes. The song’s success propelled Sabrino into the spotlight, solidifying their status as a rising star.
+                    </p>
+                    <button className="btn btn-square btn-ghost">
+                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
+                    </button>
+                    <button className="btn btn-square btn-ghost">
+                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
+                    </button>
+                  </li>
+
+                </ul>
+
+              </div>
+
+              <div className="card-actions justify-end">
+                <button className="btn btn-primary">Watch</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
