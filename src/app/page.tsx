@@ -39,166 +39,180 @@ export default function GitHubFinder() {
       <div className="mt-10">
         {result && result.items?.map((u: any) => (
 
-          <div key={u.id} className="card card-side bg-base-100 shadow-sm">
-            <Image
-              src={u.avatar_url}
-              alt="Movie"
-              width={100}
-              height={100}
-            />
-            <div className="card-body">
-              <h2 className="card-title">{u.login}</h2>
-              <a href={u.html_url} target="_blank">Profile Link</a>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Watch</button>
+          <div key={u.id} className="w-5/6 mx-auto">
+            <div className="card card-side bg-base-100 shadow-sm border flex flex-col lg:flex-row justify-center px-4 py-2">
+
+              <div className="relative w-5/6 max-w-[300px] h-48 sm:h-64 m-auto overflow-hidden rounded-xl">
+                <Image
+                  src={u.avatar_url}
+                  alt="Profile"
+                  fill
+                  className="object-cover"
+                />
+
               </div>
+
+              <div className="card-body">
+                <div className="flex flex-wrap gap-3">
+                <h2 className="card-title ">{u.login}</h2>
+                  <button className="btn btn-soft btn-info  justify-start">
+                    <a href={u.html_url} target="_blank">Profile Link</a>
+                  </button>
+                  <button className="btn btn-soft btn-accent  justify-start">
+                    Followers : 23
+                  </button>
+                  <button className="btn btn-soft btn-primary  justify-start">
+                    Follwing : 23
+                  </button>
+                  <button className="btn btn-soft btn-warning  justify-start">
+                    Repos : 23
+                  </button>
+
+                </div>
+
+                <div className="flex flex-col md:flex-row justify-center  gap-3 ">
+
+                  <ul className="list bg-base-100 rounded-box shadow-md h-72  md:w-1/2 w-full  overflow-y-scroll">
+
+                    <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Follwers</li>
+
+                    <li className="border">
+                      <div className="w-full border flex items-center justify-evenly gap-4">
+                        <a href=" https://github.com/DioLupa " target="_blank" className="hover:scale-120 transition-transform">
+                          <img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp" />
+                        </a>
+                        <div><a href="https://github.com/DioLupa" target="_blank" className="underline hover:text-blue-700">Dio Lupa</a></div>
+                        <div>Followers: 10</div>
+                      </div>
+                    </li>
+
+
+                  </ul>
+
+                  <ul className="list bg-base-100 rounded-box shadow-md h-72 md:w-1/2 w-full  overflow-y-scroll">
+
+                    <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Follwing</li>
+
+                    <li className="border">
+                      <div className="w-full border flex items-center justify-evenly gap-4">
+                        <a href=" https://github.com/DioLupa " target="_blank" className="hover:scale-120 transition-transform">
+                          <img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp" />
+                        </a>
+                        <div><a href="https://github.com/DioLupa" target="_blank" className="underline hover:text-blue-700">Dio Lupa</a></div>
+                        <div>Followers: 10</div>
+                      </div>
+                    </li>
+
+
+                  </ul>
+
+
+                  <ul className="list bg-base-100 rounded-box shadow-md h-72 md:w-1/2 w-full  overflow-y-scroll">
+
+                    <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Repos</li>
+
+                    <li className="border">
+                      <div className="w-full border flex items-center justify-evenly gap-4">
+                        <div>REPO Name</div>
+                        <div><button className="btn btn-soft btn-success">Private</button></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+
+              </div>
+
+
             </div>
           </div>
 
         ))}
-        <div className="w-4/6 mx-auto">
-          <div className="card card-side bg-base-100 shadow-sm">
+        <div className="w-5/6 mx-auto">
+          <div className="card card-side bg-base-100 shadow-sm border flex flex-col lg:flex-row justify-center px-4 py-2">
 
-         <div className="relative w-full max-w-[400px] h-96 sm:h-72 mx-auto border overflow-hidden rounded-xl">
-  <Image
-    src="https://avatars.githubusercontent.com/u/144619587?v=4"
-    alt="Profile"
-    fill
-    className="object-cover"
-  />
-</div>
+            <div className="relative w-5/6 max-w-[300px] h-48 sm:h-64 m-auto overflow-hidden rounded-xl">
+              <Image
+                src="https://avatars.githubusercontent.com/u/144619587?v=4"
+                alt="Profile"
+                fill
+                className="object-cover"
+              />
 
+            </div>
 
             <div className="card-body">
-              <h2 className="card-title border">Shahryar Sohail</h2>
-              <div className="flex">
+              <div className="flex flex-wrap gap-3">
+                <h2 className="card-title ">Shahryar Sohail</h2>
                 <button className="btn btn-soft btn-info  justify-start">
                   <a href="https://github.com/shahryar-sohail" target="_blank">Profile Link</a>
                 </button>
+                <button className="btn btn-soft btn-accent  justify-start">
+                  Followers : 23
+                </button>
+                <button className="btn btn-soft btn-primary  justify-start">
+                  Follwing : 23
+                </button>
+                <button className="btn btn-soft btn-warning  justify-start">
+                  Repos : 23
+                </button>
+
               </div>
 
-              <div className="flex justify-center gap-3">
+              <div className="flex flex-col md:flex-row justify-center  gap-3 ">
 
-                <ul className="list bg-base-100 rounded-box shadow-md h-1/2 overflow-scroll">
+                <ul className="list bg-base-100 rounded-box shadow-md h-72  md:w-1/2 w-full  overflow-y-scroll">
 
-                  <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Followers</li>
+                  <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Follwers</li>
 
-                  <li className="list-row">
-                    <div><img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp" /></div>
-                    <div>
-                      <div>Dio Lupa</div>
-                      <div className="text-xs uppercase font-semibold opacity-60">Remaining Reason</div>
+                  <li className="border">
+                    <div className="w-full border flex items-center justify-evenly gap-4">
+                      <a href=" https://github.com/DioLupa " target="_blank" className="hover:scale-120 transition-transform">
+                        <img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp" />
+                      </a>
+                      <div><a href="https://github.com/DioLupa" target="_blank" className="underline hover:text-blue-700">Dio Lupa</a></div>
+                      <div>Followers: 10</div>
                     </div>
-                    <p className="list-col-wrap text-xs">
-                      "Remaining Reason" became an instant hit, praised for its haunting sound and emotional depth. A viral performance brought it widespread recognition, making it one of Dio Lupa’s most iconic tracks.
-                    </p>
-                    <button className="btn btn-square btn-ghost">
-                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
-                    </button>
-                    <button className="btn btn-square btn-ghost">
-                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
-                    </button>
                   </li>
 
-                  <li className="list-row">
-                    <div><img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/4@94.webp" /></div>
-                    <div>
-                      <div>Ellie Beilish</div>
-                      <div className="text-xs uppercase font-semibold opacity-60">Bears of a fever</div>
-                    </div>
-                    <p className="list-col-wrap text-xs">
-                      "Bears of a Fever" captivated audiences with its intense energy and mysterious lyrics. Its popularity skyrocketed after fans shared it widely online, earning Ellie critical acclaim.
-                    </p>
-                    <button className="btn btn-square btn-ghost">
-                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
-                    </button>
-                    <button className="btn btn-square btn-ghost">
-                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
-                    </button>
-                  </li>
-
-                  <li className="list-row">
-                    <div><img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/3@94.webp" /></div>
-                    <div>
-                      <div>Sabrino Gardener</div>
-                      <div className="text-xs uppercase font-semibold opacity-60">Cappuccino</div>
-                    </div>
-                    <p className="list-col-wrap text-xs">
-                      "Cappuccino" quickly gained attention for its smooth melody and relatable themes. The song’s success propelled Sabrino into the spotlight, solidifying their status as a rising star.
-                    </p>
-                    <button className="btn btn-square btn-ghost">
-                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
-                    </button>
-                    <button className="btn btn-square btn-ghost">
-                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
-                    </button>
-                  </li>
 
                 </ul>
 
-                <ul className="list bg-base-100 rounded-box shadow-md  h-1/2 overflow-scroll">
+                <ul className="list bg-base-100 rounded-box shadow-md h-72 md:w-1/2 w-full  overflow-y-scroll">
 
                   <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Follwing</li>
 
-                  <li className="list-row">
-                    <div><img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp" /></div>
-                    <div>
-                      <div>Dio Lupa</div>
-                      <div className="text-xs uppercase font-semibold opacity-60">Remaining Reason</div>
+                  <li className="border">
+                    <div className="w-full border flex items-center justify-evenly gap-4">
+                      <a href=" https://github.com/DioLupa " target="_blank" className="hover:scale-120 transition-transform">
+                        <img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp" />
+                      </a>
+                      <div><a href="https://github.com/DioLupa" target="_blank" className="underline hover:text-blue-700">Dio Lupa</a></div>
+                      <div>Followers: 10</div>
                     </div>
-                    <p className="list-col-wrap text-xs">
-                      "Remaining Reason" became an instant hit, praised for its haunting sound and emotional depth. A viral performance brought it widespread recognition, making it one of Dio Lupa’s most iconic tracks.
-                    </p>
-                    <button className="btn btn-square btn-ghost">
-                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
-                    </button>
-                    <button className="btn btn-square btn-ghost">
-                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
-                    </button>
                   </li>
 
-                  <li className="list-row">
-                    <div><img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/4@94.webp" /></div>
-                    <div>
-                      <div>Ellie Beilish</div>
-                      <div className="text-xs uppercase font-semibold opacity-60">Bears of a fever</div>
-                    </div>
-                    <p className="list-col-wrap text-xs">
-                      "Bears of a Fever" captivated audiences with its intense energy and mysterious lyrics. Its popularity skyrocketed after fans shared it widely online, earning Ellie critical acclaim.
-                    </p>
-                    <button className="btn btn-square btn-ghost">
-                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
-                    </button>
-                    <button className="btn btn-square btn-ghost">
-                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
-                    </button>
-                  </li>
-
-                  <li className="list-row">
-                    <div><img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/3@94.webp" /></div>
-                    <div>
-                      <div>Sabrino Gardener</div>
-                      <div className="text-xs uppercase font-semibold opacity-60">Cappuccino</div>
-                    </div>
-                    <p className="list-col-wrap text-xs">
-                      "Cappuccino" quickly gained attention for its smooth melody and relatable themes. The song’s success propelled Sabrino into the spotlight, solidifying their status as a rising star.
-                    </p>
-                    <button className="btn btn-square btn-ghost">
-                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
-                    </button>
-                    <button className="btn btn-square btn-ghost">
-                      <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
-                    </button>
-                  </li>
 
                 </ul>
 
+
+                <ul className="list bg-base-100 rounded-box shadow-md h-72 md:w-1/2 w-full  overflow-y-scroll">
+
+                  <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Repos</li>
+
+                  <li className="border">
+                    <div className="w-full border flex items-center justify-evenly gap-4">
+                      <div>REPO Name</div>
+                      <div><button className="btn btn-soft btn-success">Private</button></div>
+                    </div>
+                  </li>
+                </ul>
               </div>
 
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Watch</button>
-              </div>
+
             </div>
+
+
           </div>
         </div>
       </div>
