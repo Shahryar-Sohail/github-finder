@@ -12,6 +12,12 @@ export default function GitHubFinder() {
     const res = await fetch(`/api/github?search=${query}`);
     const data = await res.json();
     setResult(data);
+
+    console.log("Followers Count:", data.items[0]?.followersCount);
+    console.log("Followers List:", data.items[0]?.followers);   // ✅ full followers array
+    console.log("Following List:", data.items[0]?.following); 
+
+
     setLoading(false);
   }
 
@@ -54,38 +60,41 @@ export default function GitHubFinder() {
 
               <div className="card-body">
                 <div className="flex flex-wrap gap-3">
-                <h2 className="card-title ">{u.login}</h2>
+                  <h2 className="card-title ">{u.login}</h2>
                   <button className="btn btn-soft btn-info  justify-start">
                     <a href={u.html_url} target="_blank">Profile Link</a>
                   </button>
                   <button className="btn btn-soft btn-accent  justify-start">
-                    Followers : 23
+                    Followers : {u.followersCount}
                   </button>
                   <button className="btn btn-soft btn-primary  justify-start">
-                    Follwing : 23
+                    Follwing : {u.followingCount}
                   </button>
                   <button className="btn btn-soft btn-warning  justify-start">
-                    Repos : 23
+                    Repos : {u.reposCount}
                   </button>
 
                 </div>
 
                 <div className="flex flex-col md:flex-row justify-center  gap-3 ">
 
+
+                  {/* Followers  */}
                   <ul className="list bg-base-100 rounded-box shadow-md h-72  md:w-1/2 w-full  overflow-y-scroll">
 
                     <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Follwers</li>
 
-                    <li className="border">
-                      <div className="w-full border flex items-center justify-evenly gap-4">
-                        <a href=" https://github.com/DioLupa " target="_blank" className="hover:scale-120 transition-transform">
-                          <img className="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp" />
-                        </a>
-                        <div><a href="https://github.com/DioLupa" target="_blank" className="underline hover:text-blue-700">Dio Lupa</a></div>
-                        <div>Followers: 10</div>
-                      </div>
-                    </li>
-
+                    {u.followers?.map((follower: any) =>(
+                      <li className="border" key={follower.id}>
+                        <div className="w-full border flex items-center justify-evenly gap-4">
+                          <a href={follower.html_url} target="_blank" className="hover:scale-120 transition-transform">
+                            <img className="size-10 rounded-box" src={follower.avatar_url} />
+                          </a>
+                          <div><a href={follower.html_url} target="_blank" className="underline hover:text-blue-700">{follower.login}</a></div>
+                          <div>Followers: {follower.followers}</div>
+                        </div>
+                      </li>
+                    ))}
 
                   </ul>
 
