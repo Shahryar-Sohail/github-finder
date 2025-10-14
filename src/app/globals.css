@@ -6,6 +6,134 @@
   --foreground: #171717;
 }
 
+.wrapper {
+  margin: 0;
+  min-height: 100vh;   /* allows more height than screen */
+  width: 100%;
+  background: linear-gradient(
+    -45deg,
+    #ff6ec4,
+    #7873f5,
+    #4adede,
+    #ff9a9e,
+    #fad0c4,
+    #a1c4fd,
+    #c2e9fb,
+    #fbc2eb,
+    #a6c1ee,
+    #84fab0
+  );
+  background-size: 1000% 1000%;
+  animation: gradientMove 25s ease infinite;
+  overflow-x: hidden; /* prevent sideways scroll only */
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 25%;
+    filter: hue-rotate(0deg);
+  }
+  10% {
+    background-position: 10% 50%;
+    filter: hue-rotate(36deg);
+  }
+  20% {
+    background-position: 20% 75%;
+    filter: hue-rotate(72deg);
+  }
+  30% {
+    background-position: 30% 40%;
+    filter: hue-rotate(108deg);
+  }
+  40% {
+    background-position: 40% 25%;
+    filter: hue-rotate(144deg);
+  }
+  50% {
+    background-position: 50% 50%;
+    filter: hue-rotate(180deg);
+  }
+  60% {
+    background-position: 60% 75%;
+    filter: hue-rotate(216deg);
+  }
+  70% {
+    background-position: 70% 30%;
+    filter: hue-rotate(252deg);
+  }
+  80% {
+    background-position: 80% 60%;
+    filter: hue-rotate(288deg);
+  }
+  90% {
+    background-position: 90% 40%;
+    filter: hue-rotate(324deg);
+  }
+  100% {
+    background-position: 100% 50%;
+    filter: hue-rotate(360deg);
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(
+    270deg,
+    #b5179e,
+    #7209b7,
+    #4361ee,
+    #4895ef,
+    #4cc9f0,
+    #560bad,
+    #3a0ca3,
+    #4361ee
+  );
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGradientMove 10s ease infinite;
+}
+
+@keyframes textGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 25% 75%;
+  }
+  50% {
+    background-position: 50% 50%;
+  }
+  75% {
+    background-position: 75% 25%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.animated-text {
+  display: block;
+  background: linear-gradient(270deg, #3a0ca3, #7209b7, #560bad, #4361ee, #4895ef);
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation:
+    gradientShift 10s ease infinite,
+    floatUpDown 2s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
