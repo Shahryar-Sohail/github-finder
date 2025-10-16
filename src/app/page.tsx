@@ -128,7 +128,8 @@ export default function GitHubFinder() {
                             <a href={follower.html_url} target="_blank" className="hover:scale-120 transition-transform ">
                               <Image
                                 alt="Profile"
-                                fill
+                                width={40}   
+                                height={40}
                                 className="size-10 rounded-box "
                                 src={follower.avatar_url} />
                             </a>
@@ -154,8 +155,9 @@ export default function GitHubFinder() {
                             <a href={follower.html_url} target="_blank" className="hover:scale-120 transition-transform">
                               <Image
                                 alt="Profile"
-                                fill
-                                className="size-10 rounded-box" 
+                                width={40}
+                                height={40}
+                                className="size-10 rounded-box"
                                 src={follower.avatar_url} />
                             </a>
                             <div><a href={follower.html_url} target="_blank" className="underline hover:text-blue-700">{follower.login}</a></div>
