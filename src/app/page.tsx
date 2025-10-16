@@ -70,7 +70,7 @@ export default function GitHubFinder() {
         />
         <button
           onClick={handleSearch}
-          className="ml-3 bg-blue-600 text-white px-5 py-2 rounded cursor-pointer"
+          className="ml-3 btn btn-outline btn-danger text-gray-400 px-5 py-2 rounded cursor-pointer"
         >
           Search
         </button>
