@@ -98,7 +98,7 @@ export default function GitHubFinder() {
 
                 <div className="card-body">
                   <div className="flex flex-wrap gap-3">
-                    <h2 className="card-title w-full">{u.login}</h2> 
+                    <h2 className="card-title w-full">{u.login}</h2>
                     <button className="btn btn-soft btn-info  justify-start">
                       <a href={u.html_url} target="_blank">Profile Link</a>
                     </button>
@@ -126,7 +126,11 @@ export default function GitHubFinder() {
                         <li key={follower.id}>
                           <div className="w-full flex items-center gap-4 px-4 my-2">
                             <a href={follower.html_url} target="_blank" className="hover:scale-120 transition-transform ">
-                              <img className="size-10 rounded-box " src={follower.avatar_url} />
+                              <Image
+                                alt="Profile"
+                                fill
+                                className="size-10 rounded-box "
+                                src={follower.avatar_url} />
                             </a>
 
                             <div>
@@ -148,7 +152,11 @@ export default function GitHubFinder() {
                         <li key={follower.id}>
                           <div className="w-full flex items-center gap-4 px-4 my-2">
                             <a href={follower.html_url} target="_blank" className="hover:scale-120 transition-transform">
-                              <img className="size-10 rounded-box" src={follower.avatar_url} />
+                              <Image
+                                alt="Profile"
+                                fill
+                                className="size-10 rounded-box" 
+                                src={follower.avatar_url} />
                             </a>
                             <div><a href={follower.html_url} target="_blank" className="underline hover:text-blue-700">{follower.login}</a></div>
                           </div>
