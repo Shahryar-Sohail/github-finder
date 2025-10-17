@@ -1,10 +1,12 @@
-export default function sitemap() {
+import { MetadataRoute } from "next";
+
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: "https://github-finder-olive-iota.vercel.app/",
-      lastModified: new Date(),
+      lastModified: new Date().toISOString(),
       changeFrequency: "weekly",
-      priority: 1.0,
+      priority: 1,
     },
   ];
 }
