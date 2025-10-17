@@ -49,9 +49,9 @@ export default function GitHubFinder() {
         {/* navbar  */}
         <div className="flex justify-around flex-wrap items-center gap-5">
           <div className="md:w-1/6 md:block hidden">
-            <Link href="https://github-finder-olive-iota.vercel.app/">
+            <a href="https://github-finder-olive-iota.vercel.app/">
               <Image src={githubLogo} className="bg-white rounded-4xl animated-logo" alt="GitHub Logo" width={50} height={50} />
-            </Link>
+            </a>
           </div>
           <div className="md:w-1/6">
             <h1 className="text-3xl md:text-4xl font-bold mb-5 gradient-text animated-text">GitHub Finder</h1>
@@ -76,6 +76,7 @@ export default function GitHubFinder() {
         >
           Search
         </button>
+        <button className="btn btn-outline btn-success block mx-auto mt-5 rounded-4xl">Results: {result?.items?.length || 0}</button>
         {
           loading &&
           <div>
