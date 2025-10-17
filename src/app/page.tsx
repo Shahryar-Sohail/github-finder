@@ -45,7 +45,8 @@ export default function GitHubFinder() {
         />
 
       </div>
-      <div className="relative z-10 min-h-screen p-10 text-center">
+      <div className="relative z-10 min-h-full p-10 text-center">
+
         {/* navbar  */}
         <div className="flex justify-around flex-wrap items-center gap-5">
           <div className="md:w-1/6 md:block hidden">
@@ -204,6 +205,11 @@ export default function GitHubFinder() {
 
           ))}
         </div>
+
+        <p className="text-white pb-10">
+          GitHub Finder lets you explore any GitHub user or repository in seconds.
+          View profiles, followers, and repositories all in one clean, responsive interface.
+        </p>
       </div>
 
 
