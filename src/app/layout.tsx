@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "GitHub Finder | Repo Finder & Profile Explorer",
   description:
     "Find your favorite GitHub repositories and users with ease using GitHub Finder. Search by username or repository name to get detailed information, followers, and insights.",
+  verification: {
+    google: "dlz20u5jtY4PZ1vkpYl1KEcVk77U30NSR4Xsp_9n3G4",
+  },
   keywords: [
     "GitHub Finder",
     "GitHub Repo Finder",
