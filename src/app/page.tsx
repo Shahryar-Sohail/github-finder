@@ -18,7 +18,7 @@ export default function GitHubFinder() {
     setResult(data);
 
     console.log("Followers Count:", data.items[0]?.followersCount);
-    console.log("Followers List:", data.items[0]?.followers);   // ✅ full followers array
+    console.log("Followers List:", data.items[0]?.followers);
     console.log("Following List:", data.items[0]?.following);
     console.log("Repos:", data.items[0]?.repos);
     if (data.items?.length === 0) {
@@ -45,11 +45,13 @@ export default function GitHubFinder() {
         />
 
       </div>
-
       <div className="relative z-10 min-h-screen p-10 text-center">
+        {/* navbar  */}
         <div className="flex justify-around flex-wrap items-center gap-5">
           <div className="md:w-1/6 md:block hidden">
-            <Image src={githubLogo} className="bg-white rounded-4xl animated-logo" alt="GitHub Logo" width={50} height={50} />
+            <Link href="https://github-finder-olive-iota.vercel.app/">
+              <Image src={githubLogo} className="bg-white rounded-4xl animated-logo" alt="GitHub Logo" width={50} height={50} />
+            </Link>
           </div>
           <div className="md:w-1/6">
             <h1 className="text-3xl md:text-4xl font-bold mb-5 gradient-text animated-text">GitHub Finder</h1>
@@ -66,11 +68,11 @@ export default function GitHubFinder() {
           onChange={(e) => setQuery(e.target.value)}
           id="searchInput"
           placeholder="User Name..."
-          className="border p-3 mt-10 md:w-1/3 text-lg text-white placeholder-gray-300"
+          className="border p-3 mt-10 mb-5 md:w-1/3 text-lg text-white placeholder-gray-300"
         />
         <button
           onClick={handleSearch}
-          className="ml-3 btn btn-outline btn-danger text-gray-400 px-5 py-2 rounded cursor-pointer"
+          className="ml-3  btn btn-outline btn-danger text-gray-400 px-5 py-2 rounded cursor-pointer"
         >
           Search
         </button>
@@ -80,6 +82,8 @@ export default function GitHubFinder() {
             <span className="loading loading-spinner text-success text-[100px] m-10"></span>
           </div>
         }
+
+        {/* results  */}
         <div className="mt-10 h-[60vh] overflow-y-scroll">
           {result && result.items?.map((u: any) => (
 
@@ -128,7 +132,7 @@ export default function GitHubFinder() {
                             <a href={follower.html_url} target="_blank" className="hover:scale-120 transition-transform ">
                               <Image
                                 alt="Profile"
-                                width={40}   
+                                width={40}
                                 height={40}
                                 className="size-10 rounded-box "
                                 src={follower.avatar_url} />
