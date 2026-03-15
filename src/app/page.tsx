@@ -30,8 +30,8 @@ export default function GitHubFinder() {
   }
 
   return (
-    <div className="relative w-full min-h-screen bg-black overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <div className="relative w-full min-h-screen bg-cyan-700 overflow-hidden">
+      {/* <div className="absolute inset-0 z-0">
         <Particles
           particleColors={['#ff0000', '#ffffff']}
           particleCount={19000}
@@ -41,26 +41,23 @@ export default function GitHubFinder() {
           moveParticlesOnHover={true}
           alphaParticles={false}
           disableRotation={true}
-
         />
 
-      </div>
+      </div> */}
       <div className="relative z-10 min-h-full p-10 text-center">
 
         {/* navbar  */}
-        <div className="flex justify-around flex-wrap items-center gap-5">
+        <div className="flex justify-around flex-wrap items-center gap-5 p-2 bg-black/20  rounded-4xl">
           <div className="md:w-1/6 md:block hidden">
             <a href="https://github-finder-olive-iota.vercel.app/">
-              <Image src={githubLogo} className="bg-white rounded-4xl animated-logo" alt="GitHub Logo" width={50} height={50} />
+              <Image src={githubLogo} className="bg-white rounded-4xl" alt="GitHub Logo" width={50} height={50} />
             </a>
           </div>
           <div className="md:w-1/6">
-            <h1 className="text-3xl md:text-4xl font-bold mb-5 gradient-text animated-text">GitHub Finder</h1>
+            <h1 className="text-3xl md:text-4xl text-white">GitHub Finder</h1>
           </div>
-          <div className="flex justify-between gap-3 md:w-1/6">
-            <h1 className="text-3xl md:text-2xl font-bold mb-5 gradient-text animated-text ">Developed By
-            </h1>
-            <Link href="https://github.com/Shahryar-Sohail" target="_blank"> <Image src={githubLogo} className="bg-white rounded-4xl animated-logo border" alt="GitHub Logo" width={50} height={30} /></Link>
+          <div className="flex justify-center gap-3 md:w-1/6">
+            <Link href="https://github.com/Shahryar-Sohail" target="_blank"><h1 className="text-xl text-white underline">Shahryar Sohail</h1></Link>
           </div>
         </div>
 
@@ -73,7 +70,7 @@ export default function GitHubFinder() {
         />
         <button
           onClick={handleSearch}
-          className="ml-3  btn btn-outline btn-danger text-gray-400 px-5 py-2 rounded cursor-pointer"
+          className="ml-3 btn btn-outline btn-danger text-black px-5 py-2 rounded cursor-pointer"
         >
           Search
         </button>
@@ -211,6 +208,12 @@ export default function GitHubFinder() {
           View profiles, followers, and repositories all in one clean, responsive interface.
         </p>
       </div>
+
+      <footer className="footer sm:footer-horizontal footer-center bg-black/50 text-white p-4">
+        <aside>
+          <p>Copyright © {new Date().getFullYear()} - All right reserved by Shahryar Sohail</p>
+        </aside>
+      </footer>
 
 
     </div>
